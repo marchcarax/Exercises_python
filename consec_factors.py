@@ -49,14 +49,15 @@ def find_distinct_factors():
     i = 600 #we already know it has to be higher than 644
     number_factors = 4
     while True:
-        fact = distinct_factors(factors(i), i) 
-        fact_prev = distinct_factors(factors(i+1), i+1)
-        fact_prev2 = distinct_factors(factors(i+2), i+2)
-        fact_prev3 = distinct_factors(factors(i+3), i+3)
-        
-        if (len(fact) - 1) == number_factors and (len(fact_prev) - 1) == number_factors and (len(fact_prev2) - 1) == number_factors:
-            if (len(fact_prev3) - 1) == number_factors:
-                return i, i+1, i+2, i+3
+        fact = distinct_factors(factors(i), i)
+        if (len(fact) - 1) == number_factors:
+            fact_prev = distinct_factors(factors(i+1), i+1)
+            if (len(fact_prev) - 1) == number_factors:
+                fact_prev2 = distinct_factors(factors(i+2), i+2)
+                if (len(fact_prev2) - 1) == number_factors:
+                    fact_prev3 = distinct_factors(factors(i+3), i+3)
+                    if (len(fact_prev3) - 1) == number_factors:
+                        return i, i+1, i+2, i+3
 
         if i == 10000000:
             return i
