@@ -44,7 +44,7 @@ def distinct_factors(l: list, i: int):
     a = arr[arr != 0]
     return a
 
-#for 2 works fine
+
 def find_distinct_factors():
     i = 600 #we already know it has to be higher than 644
     number_factors = 4
