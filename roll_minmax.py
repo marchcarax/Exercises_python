@@ -20,6 +20,10 @@ def max_filter1d_valid_strided(a, W):
 def min_filter1d_valid_strided(a, W):
     return strided_app(a, W, S=1).min(axis=1)
 
+#Computes mean given a window W and an array a
+def mean_filter1d_valid_strided(a, W):
+    return strided_app(a, W, S=1).mean(axis=1)
+
 def main():
 
     window = 3
@@ -32,6 +36,10 @@ def main():
     min_arr = min_filter1d_valid_strided(arr, window)
     min_arr = np.insert(min_arr, 0, np.zeros(window-1))
     print(min_arr)
+
+    mean_arr = mean_filter1d_valid_strided(arr, window)
+    mean_arr = np.insert(mean_arr, 0, np.zeros(window-1))
+    print(mean_arr)
 
 
 if __name__ == "__main__":
