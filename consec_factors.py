@@ -50,19 +50,19 @@ def find_distinct_factors():
         j = 1
         fact = distinct_factors(factors(i))
         if (len(fact) - 1) == number_factors:
-            fact_fut = distinct_factors(factors(i+1))
-            if (len(fact_fut) - 1) == number_factors:
+            fact_fut3 = distinct_factors(factors(i+3))
+            if (len(fact_fut3) - 1) == number_factors:
                 fact_fut2 = distinct_factors(factors(i+2))
                 if (len(fact_fut2) - 1) == number_factors:
-                    fact_fut3 = distinct_factors(factors(i+3))
-                    if (len(fact_fut3) - 1) == number_factors:
+                    fact_fut1 = distinct_factors(factors(i+1))
+                    if (len(fact_fut1) - 1) == number_factors:
                         return i, i+1, i+2, i+3
                     else:
-                        j = 4 #if future i+3 fails, begin calcs in i+4
+                        j = 2 #if future i+1 fails, begin calcs in i+2
                 else:
                     j = 3 #if future i+2 fails, begin calcs in i+3
             else:
-                j = 2 #if future i+1 fails, begin calcs in i+2
+                j = 4 #if future i+3 fails, begin calcs in i+4
 
         if i == 10000000:
             return i
