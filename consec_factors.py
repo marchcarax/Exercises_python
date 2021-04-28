@@ -28,11 +28,9 @@ def factors(n):
                     ([i, n//i] for i in range(1, int(sqrt(n))+1, step) if n % i == 0)))
 
 
-#want to erase the 1, n, and factors that are not distinct
-def distinct_factors(l: list, i: int):
-    res = []
-    arr = np.array(list(l))
-    zeros = np.zeros(len(arr))
+def distinct_factors(l: set):
+
+    arr = np.array(list(l)).astype(np.int32)
 
     for i in range(1, len(arr)):
         if np.isin(sqrt(arr[i]), arr):
@@ -49,20 +47,27 @@ def find_distinct_factors():
     i = 600 #we already know it has to be higher than 644
     number_factors = 4
     while True:
-        fact = distinct_factors(factors(i), i)
+        j = 1
+        fact = distinct_factors(factors(i))
         if (len(fact) - 1) == number_factors:
-            fact_prev = distinct_factors(factors(i+1), i+1)
-            if (len(fact_prev) - 1) == number_factors:
-                fact_prev2 = distinct_factors(factors(i+2), i+2)
-                if (len(fact_prev2) - 1) == number_factors:
-                    fact_prev3 = distinct_factors(factors(i+3), i+3)
-                    if (len(fact_prev3) - 1) == number_factors:
+            fact_fut = distinct_factors(factors(i+1))
+            if (len(fact_fut) - 1) == number_factors:
+                fact_fut2 = distinct_factors(factors(i+2))
+                if (len(fact_fut2) - 1) == number_factors:
+                    fact_fut3 = distinct_factors(factors(i+3))
+                    if (len(fact_fut3) - 1) == number_factors:
                         return i, i+1, i+2, i+3
+                    else:
+                        j = 4 #if future i+3 fails, begin calcs in i+4
+                else:
+                    j = 3 #if future i+2 fails, begin calcs in i+3
+            else:
+                j = 2 #if future i+1 fails, begin calcs in i+2
 
         if i == 10000000:
             return i
 
-        i += 1
+        i += j
 
 def main():
     
