@@ -18,13 +18,15 @@ def perfect_square():
     What is sure is that:
     x + y = a*a --> x = A - y ; A is the max arr_square[i] value ; 
     x - y = b*b --> y = x - B ; x > B ; adding first 2 formulas: x = (A + B)/2 --> must be even --> both A and B must be either odd or even
-    x + z = c*c --> x = C - z ; C is the second biggest; z = C - x
+    x + z = c*c --> x = C - z ; C is the second biggest; z = C - x --> c*c > x --> c > sqrt(x)
     x - z = d*d --> z = x - D ; x > B > D
     y + z = e*e --> y = E - z ; 
     y - z = f*f --> z = y - F; F is the smallest arr_square[i] value
 
     '''
+    #First I create the list of perfect squares
     arr_square = np.arange(1000)*np.arange(1000)
+    
     x = 3
     y =  2 
     z = 1 #must be min >0
