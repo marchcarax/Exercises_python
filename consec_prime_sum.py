@@ -54,7 +54,8 @@ def sum_primes(a: int):
             break
         else:
             if prime_arr[i] + prime_arr[i+1] in prime_arr:
-                return prime_arr[i] + prime_arr[i+1], 2
+                sol_sum.append(prime_arr[i] + prime_arr[i+1])
+                sol_count.append(2)
         i += 1
     
     #Now we will test first half of the array
