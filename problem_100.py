@@ -18,7 +18,8 @@ def find_blues():
     both end must be close to sqrt(1/2) due to 1
     sqrt(1/2)*T - 1 element < B < sqrt(1/2)*T + 1 element
     initial code took forever cause i was checking every single element until finding solution to 100, 1000, 10000, 100000, 10**6...
-    while trying to create an efficient solution I found out (by luck not knowing what to do lol) each new solution begins exactly after multiplying the ratio of the 2 prvious values
+    while trying to create an efficient solution I found out (by luck not knowing what to do lol) each new solution begins exactly after multiplying 
+    the ratio of the 2 prvious values
     that value converges each time 5.828....
     i dont know what value is that, but its definitely important here
     with that, the solution is lighting fast! cool
@@ -40,7 +41,7 @@ def find_blues():
                     return i, prev_b
             i += 1
         #print(t)
-        if len(prev_b) >= 2 and found==True:
+        if len(prev_b) >= 2 and found == True:
             t = round(t*prev_b[len(prev_b)-1]/prev_b[len(prev_b)-2])
         else:
             t += 1
